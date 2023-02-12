@@ -1,0 +1,64 @@
+post 
+  /admin/login
+  req->body:
+    {
+      "username": "hikmat",
+      "password": "admin1234"
+    }
+  res-> token
+
+1."token"ni olish uchun adminga login qilamiz,
+"respons"da token qaytadi
+2.token so'raladigan zaproslaga
+"token"ni headerga "token" kaliti 
+bilan beramiz
+3. 
+  token kerakmas : get
+  token kerak : post, put, delete
+----------------------------------------
+  
+get
+  /categories [array]
+  /categories/2 [single]
+  *
+  /subcategories [array]
+  /subcategories/1 [single]
+  *
+  /products --> []
+  /products?categoryId=1 [array]
+  /products?subCategoryId=1 [array]
+  /products?subCategoryId=1&model=samsung [array]
+  /products?model=samsung [array]
+  /products?...{quidagilar kombinatsiyalari : categoryId, model, subCategoryId}
+  /products/1 [single]
+----------------------------------------
+
+post
+  /categories
+    categoryName
+  
+  /subcategories
+    categoryId, subCategoryName
+  
+  /products
+    subCategoryId, productName, price, color, model
+    
+----------------------------------------
+    
+
+delete
+  /categories/1
+    categoryName
+
+  /subcategories/1
+  /products/1
+----------------------------------------
+put 
+  /categories/1
+    category_name
+  
+  /subcategories/1
+    category_id, sub_category_name
+  
+  /products/1
+    sub_category_id, product_name, price, color, model
